@@ -14,9 +14,6 @@ class GreenvilleRevenue
 
         //HINT: set space here as default value for the option variable value
         char QUIT = 'Z';
-        char option = ' ';
-        int number;
-        string entryString;
         bool isvalid = false;
         Contestant[] contestants = new Contestant[MAX_CONTESTANTS];
         num = getContestantNumber(MIN_CONTESTANTS, MAX_CONTESTANTS);
@@ -31,6 +28,12 @@ class GreenvilleRevenue
             isvalid = true;
         }
         getLists(num, contestants);
+
+        //instead of the while loop above, consider using this:
+        //char option = ' ';
+        //while (option != QUIT){
+        //option = getLists(num, contestants);
+        //}
     }
 
     private static int getContestantNumber(int min, int max)
@@ -87,7 +90,7 @@ class GreenvilleRevenue
         string name;
         char talent;
         int age;
-        int pos;
+        //int pos;
         //HINT (7) - do seventh
         //HINT: int pos; here
         while (x < num)
