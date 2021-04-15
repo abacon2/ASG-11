@@ -5,8 +5,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="C:\Homework\ASG11.cs" Link="ASG11.cs" />
-  </ItemGroup>
-
 </Project>
