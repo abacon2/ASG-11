@@ -22,10 +22,10 @@ class GreenvilleRevenue
 
         //HINT (3) - do this third
         //HINT: check user input for stopping before calling getLists method with while loop here
-        while (!isvalid)
+        char option = ' ';
+        while (option != QUIT)
         {
-            Write("\nEnter a talent type or {0} to quit >> ", QUIT);
-            isvalid = true;
+            option = getLists(num, contestants);
         }
         getLists(num, contestants);
 
@@ -72,12 +72,12 @@ class GreenvilleRevenue
                     //and allow the user to correct the input
                     {
                         //HINT: WriteLine(e.Message)
-                        WriteLine("Number must be between {0} and {1}", e.Message);
+                        WriteLine(e.Message);
                         num = max + 1;
                         Write("Enter number of contestants >> ", e.Message);
                         entryString = ReadLine();
-                        throw;
                     }
+                    
             }
         }
         return num;
@@ -93,6 +93,7 @@ class GreenvilleRevenue
         //int pos;
         //HINT (7) - do seventh
         //HINT: int pos; here
+        int pos;
         while (x < num)
         {
             Write("Enter contestant name >> ");
@@ -113,6 +114,15 @@ class GreenvilleRevenue
             //variable for the position
             //HINT: the Catch block should be:
             //WriteLine("{0} is not a valid talent code. Assigned as Invalid.", talent);
+            try
+            {
+                validateCode(talent, out pos);
+            }
+            catch
+            {
+                talent = 'x';
+                WriteLine("{0} is not a valid talent code. Assigned as Invalid.", talent);
+            }
 
             Write("       Enter contestant's age >> ");
             int.TryParse(ReadLine(), out age);
@@ -176,6 +186,7 @@ class GreenvilleRevenue
                     {
                         WriteLine("{0} is not a valid code", option);
                         Write("\nEnter a talent type or {0} to quit >> ", QUIT);
+                        isValid = false;
                         //HINT: set isValid to false
                     }
                 }
@@ -194,10 +205,12 @@ class GreenvilleRevenue
                         }
                     }
                     if (!found)
+                    {
                         //HINT (12) do twelveth - add brackets: {
                         WriteLine("No contestants had talent {0}", Contestant.talentStrings[pos]);
-                    isValid = false;
-                    Write("\nEnter a talent type or {0} to quit >> ", QUIT);
+                        isValid = false;
+                        Write("\nEnter a talent type or {0} to quit >> ", QUIT);
+                    }
                 }
                 //HINT: }
             }
